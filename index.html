@@ -1,62 +1,212 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Its ur bros game store </title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Its ur bros game store</title>
 
 <style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:system-ui,sans-serif;
+}
+
 body{
-background:#111;
+background:#0f172a;
 color:white;
-font-family:Arial;
 padding:20px;
 }
 
-h1{
+.header{
 text-align:center;
+margin-bottom:25px;
+}
+
+.logo{
+font-size:32px;
+font-weight:bold;
+}
+
+.subtitle{
+opacity:.7;
+margin-top:5px;
+}
+
+.search{
+width:100%;
+padding:14px;
+margin:20px 0;
+border:none;
+border-radius:12px;
+font-size:16px;
+background:#1e293b;
+color:white;
+}
+
+.games{
+display:grid;
+gap:20px;
 }
 
 .card{
-background:#222;
+background:#1e293b;
+border-radius:20px;
 padding:15px;
-margin:15px 0;
-border-radius:15px;
+display:flex;
+align-items:center;
+gap:15px;
+transition:.3s;
 }
 
-.card img{
+.card:hover{
+transform:translateY(-4px);
+}
+
+.icon{
 width:90px;
 height:90px;
 border-radius:20px;
+object-fit:cover;
+}
+
+.info{
+flex:1;
+}
+
+.title{
+font-size:20px;
+font-weight:bold;
+margin-bottom:8px;
+}
+
+.desc{
+opacity:.8;
+font-size:14px;
+margin-bottom:10px;
+}
+
+.rating{
+color:#facc15;
+margin-bottom:10px;
 }
 
 .download{
-display:inline-block;
 background:#22c55e;
 color:white;
-padding:10px 15px;
-border-radius:8px;
+padding:10px 18px;
+border-radius:10px;
 text-decoration:none;
-margin-top:10px;
+font-weight:bold;
+display:inline-block;
 }
+
+.download:hover{
+opacity:.9;
+}
+
+.banner{
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+padding:25px;
+border-radius:20px;
+margin-bottom:20px;
+text-align:center;
+}
+
+.banner h2{
+margin-bottom:10px;
+}
+
 </style>
 </head>
-
 <body>
 
-<h1>Its ur bros game store</h1>
+<div class="header">
+<div class="logo">🎮 Its ur bros game store</div>
+<div class="subtitle">Download games easily</div>
+</div>
+
+<input
+class="search"
+type="text"
+placeholder="Search games..."
+id="searchBox"
+>
+
+<div class="banner">
+<h2>🔥 Featured Game</h2>
+<p>CarX Street - Open World Racing Experience</p>
+</div>
+
+<div class="games" id="games">
 
 <div class="card">
-<img src="https://share.google/Gzn1NNp0u34IiO56R">
 
-<h2>Carx Street</h2>
+<img
+class="icon"
+src="https://upload.wikimedia.org/wikipedia/en/3/3d/CarX_Street_icon.jpg"
+>
 
-<p>Best Game like Forza Horizon.</p>
+<div class="info">
 
-<a class="download" href="https://play.google.com/store/apps/details?id=com.carxtech.sr">
+<div class="title">CarX Street</div>
+
+<div class="desc">
+Best game similar to Forza Horizon.
+</div>
+
+<div class="rating">
+⭐⭐⭐⭐⭐ 4.8
+</div>
+
+<a
+class="download"
+href="https://play.google.com/store/apps/details?id=com.carxtech.sr"
+target="_blank"
+>
 Download
 </a>
+
 </div>
+
+</div>
+
+</div>
+
+<script>
+
+const search =
+document.getElementById("searchBox");
+
+search.addEventListener("input",()=>{
+
+let filter =
+search.value.toLowerCase();
+
+let cards =
+document.querySelectorAll(".card");
+
+cards.forEach(card=>{
+
+let title =
+card.querySelector(".title")
+.textContent
+.toLowerCase();
+
+if(title.includes(filter)){
+card.style.display="flex";
+}else{
+card.style.display="none";
+}
+
+});
+
+});
+
+</script>
 
 </body>
 </html>
